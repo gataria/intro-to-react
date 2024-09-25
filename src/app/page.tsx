@@ -11,10 +11,7 @@ function MyButton() {
   const [count, setCount] = useState(0);
 
   function handleClick() {
-    const newCount = count + 1;
-    setCount(newCount);
-
-    alert(`You clicked me! Number of clicks on this button: ${newCount}`);
+    setCount(count + 1);
   }
   
   return (
