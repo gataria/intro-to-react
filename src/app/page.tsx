@@ -1,11 +1,17 @@
+'use client';
+
 interface listType {
   title: string,
   id: number,
 }
 
 function MyButton() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+  
   return (
-    <button className="bg-fuchsia-700 p-1 rounded">
+    <button onClick={() => handleClick()} className="bg-fuchsia-700 p-1 rounded">
       I'm a button
     </button>
   );
