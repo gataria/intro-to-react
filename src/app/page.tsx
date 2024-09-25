@@ -1,18 +1,25 @@
 'use client';
 
+import { useState } from "react";
+
 interface listType {
   title: string,
   id: number,
 }
 
 function MyButton() {
+  const [count, setCount] = useState(0);
+
   function handleClick() {
-    alert('You clicked me!');
+    const newCount = count + 1;
+    setCount(newCount);
+
+    alert(`You clicked me! Number of clicks on this button: ${newCount}`);
   }
   
   return (
     <button onClick={() => handleClick()} className="bg-fuchsia-700 p-1 rounded">
-      I'm a button
+      I'm a button {`(clicked ${count}  times)`}
     </button>
   );
 }
@@ -40,6 +47,8 @@ export default function Home() {
       <h1 className="text-3xl font-bold">
         Welcome to my app
       </h1>
+      <MyButton />
+      <br />
       <MyButton />
       <ul>
         {listItems}
