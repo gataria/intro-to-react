@@ -7,21 +7,26 @@ interface listType {
   id: number,
 }
 
-function MyButton() {
-  const [count, setCount] = useState(0);
+interface myButtonProps {
+  count: number,
+  onClick: Function,
+}
 
-  function handleClick() {
-    setCount(count + 1);
-  }
-  
+function MyButton({ count, onClick }: myButtonProps) {  
   return (
-    <button onClick={() => handleClick()} className="bg-fuchsia-700 p-1 rounded">
+    <button onClick={() => onClick()} className="bg-fuchsia-700 p-1 rounded">
       I'm a button {`(clicked ${count}  times)`}
     </button>
   );
 }
 
 export default function Home() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
   const list : listType[] = [
     { title: "Bread", id: 1 },
     { title: "Milk", id: 2 },
@@ -44,9 +49,9 @@ export default function Home() {
       <h1 className="text-3xl font-bold">
         Welcome to my app
       </h1>
-      <MyButton />
+      <MyButton count={count} onClick={() => handleClick()} />
       <br />
-      <MyButton />
+      <MyButton count={count} onClick={() => handleClick()}/>
       <ul>
         {listItems}
       </ul>
